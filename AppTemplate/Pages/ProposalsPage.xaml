@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<template:PageTemplate  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        x:Class="AppTemplate.Pages.ProposalsPage"
+                        xmlns:settings="clr-namespace:PlutoFramework.Components.Settings;assembly=PlutoFramework"
+                        xmlns:template="clr-namespace:PlutoFramework.Templates.PageTemplate;assembly=PlutoFramework"
+                        xmlns:xcavate="clr-namespace:PlutoFramework.Components.Xcavate;assembly=PlutoFramework"
+                        xmlns:accounts="clr-namespace:PlutoFramework.Components.Account;assembly=PlutoFramework"
+                        xmlns:referenda="clr-namespace:PlutoFramework.Components.Referenda;assembly=PlutoFramework"
+                        xmlns:charts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+                        Title="Proposal List">
+
+    <VerticalStackLayout Margin="0, 40, 0, 10"
+                     WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
+                     BindableLayout.ItemsSource="{Binding Items}"
+                     Spacing="5">
+        <BindableLayout.ItemTemplate>
+            <!--
+                <DataTemplate>
+                <Border Padding="10" Margin="10" Stroke="Gray">
+                    <VerticalStackLayout>
+                        <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"/>
+                        <Label Text="{Binding AyesPercentage, StringFormat='Ayes: {0:P0}'}"/>
+                        <Label Text="{Binding NaysPercentage, StringFormat='Nays: {0:P0}'}"/>
+                    </VerticalStackLayout>
+
+                    
+                </Border>
+            </DataTemplate>
+-->
+            <DataTemplate>
+                <Border Padding="10" Margin="10, 0, 10, 0">
+                    <VerticalStackLayout
+                       VerticalOptions="Center">
+                        <Label Text="{Binding Name}" FontSize="18" FontFamily="Unbounded-Bold.ttf" />
+                    <HorizontalStackLayout Spacing="20">
+                        <Label Text="{Binding AyesPercentage, StringFormat='Ayes: {0:P0}'}" FontSize="18" TextColor="DarkGreen" FontFamily="Unbounded-Bold.ttf" />
+                        <Label Text="{Binding NaysPercentage, StringFormat='Nays: {0:P0}'}" FontSize="18" TextColor="Crimson" FontFamily="Unbounded-Bold.ttf"/>
+                            <!-- Open Proposal button -->
+                            <Image 
+                                Source="obrazek.png"
+                                WidthRequest="20"
+                                Margin="60, 10, 0, 10"
+                                AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
+                                AbsoluteLayout.LayoutFlags="PositionProportional">
+
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenProposalCommand}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                </Border>
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+
+
+    </VerticalStackLayout>
+
+    <template:PageTemplate.PopupContent>
+        <accounts:NoAccountPopup />
+    </template:PageTemplate.PopupContent>
+</template:PageTemplate>

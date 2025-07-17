@@ -52,15 +52,15 @@
                     
                     <Button
                         Text="View Proposals"
-                        Command="{Binding GoToProposalsPage}"
+                        Command="{Binding GoToProposalsPageCommand}"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="{StaticResource PrimaryDarkText}"
                         FontAttributes="Bold"
-                        Padding="16,10"
+                        FontFamily="Unbounded-Bold.ttf"
+                        Padding="10,10"
                         CornerRadius="0"
                         BorderColor="{StaticResource PrimaryDark}"
-                        BorderWidth="1"
-                        Margin="8" />
+                        />
 
                     <Button
                         Text="Create Proposal"
@@ -68,11 +68,11 @@
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="{StaticResource PrimaryDarkText}"
                         FontAttributes="Bold"
-                        Padding="16,10"
+                        FontFamily="Unbounded-Bold.ttf"
+                        Padding="10,10"
                         CornerRadius="0"
                         BorderColor="{StaticResource PrimaryDark}"
-                        BorderWidth="1"
-                        Margin="8" />
+                        />
 
 
                     <address:PolkadotAddressView
@@ -96,8 +96,9 @@
         <Label
             Text="Bohemia Roots"
             TextColor="HotPink"
-            FontSize="40"
-            WidthRequest="400" Margin="50, 0, 50, 10"
+            FontSize="30"
+            WidthRequest="400" Margin="50, 2, 50, 10"
+            FontFamily="Unbounded-Bold.ttf"
             HorizontalTextAlignment="Center"
             VerticalTextAlignment="Center"
             AbsoluteLayout.LayoutBounds="0.5, 0, AutoSize, AutoSize"

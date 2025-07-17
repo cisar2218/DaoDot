@@ -1,0 +1,9 @@
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppTemplate.Pages.ProposalItemView">
+    <VerticalStackLayout Padding="10">
+        <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"/>
+        <Label Text="{Binding AyesPercentage, StringFormat='Ayes: {0:P0}'}"/>
+        <Label Text="{Binding NaysPercentage, StringFormat='Nays: {0:P0}'}"/>
+    </VerticalStackLayout>
+</ContentView>

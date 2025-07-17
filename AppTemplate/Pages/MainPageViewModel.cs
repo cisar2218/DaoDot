@@ -6,8 +6,6 @@ using PlutoFramework.Components.UniversalScannerView;
 using PlutoFramework.Components.Vault;
 using PlutoFramework.Model;
 using Plutonication;
-using Microsoft.Maui.Controls;
-// using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 
 namespace AppTemplate.Pages
 {
@@ -20,17 +18,13 @@ namespace AppTemplate.Pages
         public Task Settings() => Shell.Current.Navigation.PushAsync(new SettingsPage());
 
         [RelayCommand]
-        public Task ProposalCreation() => Shell.Current.Navigation.PushAsync(new SettingsPage());
+        public Task ProposalCreation() => Shell.Current.Navigation.PushAsync(new CreateProposalPage());
 
-
+        [RelayCommand]
+        public Task GoToProposalsPage() => Shell.Current.Navigation.PushAsync(new ProposalsPage());
 
         [ObservableProperty]
         private bool isRefreshing = false;
-        [RelayCommand]
-        public async Task ClaimAsync()
-        {
-           await Browser.Default.OpenAsync(new Uri("https://dotmemo.xyz/"), BrowserLaunchMode.SystemPreferred);
-        }
 
         [RelayCommand]
         public async Task RefreshAsync()

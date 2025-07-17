@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<template:PageTemplate  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        x:Class="AppTemplate.Pages.CreateProposalPage"
+                        xmlns:settings="clr-namespace:PlutoFramework.Components.Settings;assembly=PlutoFramework"
+                        xmlns:template="clr-namespace:PlutoFramework.Templates.PageTemplate;assembly=PlutoFramework"
+                        xmlns:xcavate="clr-namespace:PlutoFramework.Components.Xcavate;assembly=PlutoFramework"
+                        xmlns:accounts="clr-namespace:PlutoFramework.Components.Account;assembly=PlutoFramework"
+                        Title="Create Proposal">
+
+    <VerticalStackLayout HorizontalOptions="Center"
+                         Padding="20, 10, 20, 100"
+                         Spacing="15">
+        <!--Proposal-Name-->
+            <HorizontalStackLayout
+            VerticalOptions="Center"
+            Padding="0, 0, 0, 0"
+            Spacing="15">
+            <Label
+            Text="Proposal Name:"
+            TextColor="Black"
+            FontSize="15"
+            WidthRequest="150" Margin="0, 0, 0, 0"
+            FontFamily="Unbounded-Regular.ttf"
+            AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
+            AbsoluteLayout.LayoutFlags="PositionProportional">
+            </Label>
+            <Entry
+                Placeholder="Enter name"
+                TextColor="Black"
+                FontSize="15"
+                WidthRequest="150"
+                FontFamily="Unbounded-Regular.ttf"
+                BackgroundColor="#F0F0F0"
+                Margin="0, -10, 0, 0"
+                AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+            />
+        </HorizontalStackLayout>
+        <!--Proposal-Value-->
+        <HorizontalStackLayout
+     VerticalOptions="Center"
+     Padding="0, 0, 0, 0"
+     Spacing="15">
+            <Label
+     Text="Amount:"
+     TextColor="Black"
+     FontSize="15"
+     WidthRequest="150" Margin="0, 0, 0, 0"
+     FontFamily="Unbounded-Regular.ttf"
+     AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
+     AbsoluteLayout.LayoutFlags="PositionProportional">
+            </Label>
+            <Entry
+         Placeholder="DOT Amount"
+         TextColor="Black"
+         FontSize="15"
+         WidthRequest="150"
+         FontFamily="Unbounded-Regular.ttf"
+         BackgroundColor="#F0F0F0"
+         Margin="0, -10, 0, 0"
+         AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
+         AbsoluteLayout.LayoutFlags="PositionProportional"
+     />
+        </HorizontalStackLayout>
+        <!--Proposal-Description-->
+            <Label
+        Text="Proposal Description:"
+        TextColor="Black"
+        FontSize="15"
+        WidthRequest="200"
+        Margin="-115,0,0,0"
+        FontFamily="Unbounded-Regular.ttf"
+        HorizontalTextAlignment="Start"
+        VerticalTextAlignment="Start" />
+        <Editor
+        Placeholder="Enter a detailed description"
+        TextColor="Black"
+        FontSize="14"
+        FontFamily="Unbounded-Regular.ttf"
+        BackgroundColor="#F0F0F0"
+        AutoSize="TextChanges"
+        HeightRequest="120"
+        Margin="0"
+        />
+        <Button
+            Text="Create Proposal"
+            Command="{Binding ProposalCreationCommand}"
+            BackgroundColor="{StaticResource Primary}"
+            TextColor="{StaticResource PrimaryDarkText}"
+            FontAttributes="Bold"
+            FontFamily="Unbounded-Bold.ttf"
+            Padding="10,10"
+            CornerRadius="0"
+            BorderColor="{StaticResource PrimaryDark}"
+            />
+    </VerticalStackLayout>
+
+    <template:PageTemplate.PopupContent>
+        <accounts:NoAccountPopup />
+    </template:PageTemplate.PopupContent>
+</template:PageTemplate>

@@ -55,7 +55,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Resources\Fonts\" />
-	  <Folder Include="Resources\Images\" />
 	</ItemGroup>
 
   <ItemGroup>
@@ -63,7 +62,28 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Pages\ProposalItemView.xaml.cs">
+      <DependentUpon>ProposalItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\ProposalsPage.xaml.cs">
+      <DependentUpon>ProposalsPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <MauiXaml Update="Pages\ProposalItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Pages\ProposalsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
     <MauiXaml Update="Pages\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Pages\ReferendumInfoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Pages\SettingsPage - Kopie.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
     <MauiXaml Update="Pages\SettingsPage.xaml">
