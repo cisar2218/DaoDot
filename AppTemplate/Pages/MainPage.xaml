@@ -25,7 +25,7 @@
              xmlns:balance="clr-namespace:PlutoFramework.Components.Balance;assembly=PlutoFramework"
              xmlns:buttons="clr-namespace:PlutoFramework.Components.Buttons;assembly=PlutoFramework"
              xmlns:address="clr-namespace:PlutoFramework.Components.AddressView;assembly=PlutoFramework"
-             BackgroundColor="{AppThemeBinding Light=White, Dark=#0a0a0a}"
+             BackgroundColor="{AppThemeBinding Light=White, Dark=#1F1F1F}"
              Shell.PresentationMode="ModalNotAnimated"
              xmlns:card="clr-namespace:PlutoFramework.Components.Card;assembly=PlutoFramework"
              HideSoftInputOnTapped="True">
@@ -49,13 +49,34 @@
 
                     <balance:UsdBalanceView />
 
-                    <buttons:ReceiveAndTransferView />
+                    
+                    <Button
+                        Text="View Proposals"
+                        Command="{Binding GoToProposalsPage}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="{StaticResource PrimaryDarkText}"
+                        FontAttributes="Bold"
+                        Padding="16,10"
+                        CornerRadius="0"
+                        BorderColor="{StaticResource PrimaryDark}"
+                        BorderWidth="1"
+                        Margin="8" />
 
-                    <buttons:BasicGrayButton
-                        Text="Claim Dot Memo"
-                        Command="{Binding ClaimCommand}"/>
+                    <Button
+                        Text="Create Proposal"
+                        Command="{Binding ProposalCreationCommand}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="{StaticResource PrimaryDarkText}"
+                        FontAttributes="Bold"
+                        Padding="16,10"
+                        CornerRadius="0"
+                        BorderColor="{StaticResource PrimaryDark}"
+                        BorderWidth="1"
+                        Margin="8" />
 
-                    <address:PolkadotAddressView />
+
+                    <address:PolkadotAddressView
+                       />
 
                 </VerticalStackLayout>
             </ScrollView>

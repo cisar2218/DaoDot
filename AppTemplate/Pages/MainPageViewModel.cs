@@ -19,6 +19,11 @@ namespace AppTemplate.Pages
         [RelayCommand]
         public Task Settings() => Shell.Current.Navigation.PushAsync(new SettingsPage());
 
+        [RelayCommand]
+        public Task ProposalCreation() => Shell.Current.Navigation.PushAsync(new SettingsPage());
+
+
+
         [ObservableProperty]
         private bool isRefreshing = false;
         [RelayCommand]
