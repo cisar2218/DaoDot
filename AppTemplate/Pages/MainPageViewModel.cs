@@ -6,6 +6,8 @@ using PlutoFramework.Components.UniversalScannerView;
 using PlutoFramework.Components.Vault;
 using PlutoFramework.Model;
 using Plutonication;
+using Microsoft.Maui.Controls;
+// using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 
 namespace AppTemplate.Pages
 {
@@ -13,12 +15,17 @@ namespace AppTemplate.Pages
     {
         [RelayCommand]
         public Task QrAsync() => Shell.Current.Navigation.PushAsync(new UniversalScannerPage { OnScannedMethod = OnScanned });
-
+        
         [RelayCommand]
         public Task Settings() => Shell.Current.Navigation.PushAsync(new SettingsPage());
 
         [ObservableProperty]
         private bool isRefreshing = false;
+        [RelayCommand]
+        public async Task ClaimAsync()
+        {
+           await Browser.Default.OpenAsync(new Uri("https://dotmemo.xyz/"), BrowserLaunchMode.SystemPreferred);
+        }
 
         [RelayCommand]
         public async Task RefreshAsync()

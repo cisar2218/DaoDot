@@ -51,6 +51,10 @@
 
                     <buttons:ReceiveAndTransferView />
 
+                    <buttons:BasicGrayButton
+                        Text="Claim Dot Memo"
+                        Command="{Binding ClaimCommand}"/>
+
                     <address:PolkadotAddressView />
 
                 </VerticalStackLayout>
@@ -68,7 +72,16 @@
                 <TapGestureRecognizer Command="{Binding QrCommand}" />
             </Image.GestureRecognizers>
         </Image>
-
+        <Label
+            Text="Bohemia Roots"
+            TextColor="HotPink"
+            FontSize="40"
+            WidthRequest="400" Margin="50, 0, 50, 10"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            AbsoluteLayout.LayoutBounds="0.5, 0, AutoSize, AutoSize"
+            AbsoluteLayout.LayoutFlags="PositionProportional">
+        </Label>
         <!--Settings button-->
         <Image WidthRequest="36" Margin="10, 10, 10, 10"
            AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
