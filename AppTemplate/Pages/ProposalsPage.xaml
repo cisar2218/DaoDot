@@ -1,63 +1,110 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<template:PageTemplate  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                        x:Class="AppTemplate.Pages.ProposalsPage"
-                        xmlns:settings="clr-namespace:PlutoFramework.Components.Settings;assembly=PlutoFramework"
-                        xmlns:template="clr-namespace:PlutoFramework.Templates.PageTemplate;assembly=PlutoFramework"
-                        xmlns:xcavate="clr-namespace:PlutoFramework.Components.Xcavate;assembly=PlutoFramework"
-                        xmlns:accounts="clr-namespace:PlutoFramework.Components.Account;assembly=PlutoFramework"
-                        xmlns:referenda="clr-namespace:PlutoFramework.Components.Referenda;assembly=PlutoFramework"
-                        xmlns:charts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
-                        Title="Proposal List">
+<template:PageTemplate xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       x:Class="AppTemplate.Pages.ProposalsPage"
+                       xmlns:settings="clr-namespace:PlutoFramework.Components.Settings;assembly=PlutoFramework"
+                       xmlns:template="clr-namespace:PlutoFramework.Templates.PageTemplate;assembly=PlutoFramework"
+                       xmlns:xcavate="clr-namespace:PlutoFramework.Components.Xcavate;assembly=PlutoFramework"
+                       xmlns:accounts="clr-namespace:PlutoFramework.Components.Account;assembly=PlutoFramework"
+                       xmlns:referenda="clr-namespace:PlutoFramework.Components.Referenda;assembly=PlutoFramework">
 
-    <VerticalStackLayout Margin="0, 40, 0, 10"
-                     WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
-                     BindableLayout.ItemsSource="{Binding Items}"
-                     Spacing="5">
-        <BindableLayout.ItemTemplate>
-            <!--
-                <DataTemplate>
-                <Border Padding="10" Margin="10" Stroke="Gray">
-                    <VerticalStackLayout>
-                        <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"/>
-                        <Label Text="{Binding AyesPercentage, StringFormat='Ayes: {0:P0}'}"/>
-                        <Label Text="{Binding NaysPercentage, StringFormat='Nays: {0:P0}'}"/>
-                    </VerticalStackLayout>
+    <Grid RowDefinitions="*" ColumnDefinitions="*">
+        <!-- Background Image with opacity fills entire Grid -->
+        <Image Source="yellowflashy.jpg"
+               Aspect="AspectFill"
+               Opacity="0.3"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand"
+               Grid.Row="0"
+               Grid.Column="0" />
 
-                    
-                </Border>
-            </DataTemplate>
--->
-            <DataTemplate>
-                <Border Padding="10" Margin="10, 0, 10, 0">
-                    <VerticalStackLayout
-                       VerticalOptions="Center">
-                        <Label Text="{Binding Name}" FontSize="18" FontFamily="Unbounded-Bold.ttf" />
-                    <HorizontalStackLayout Spacing="20">
-                        <Label Text="{Binding AyesPercentage, StringFormat='Ayes: {0:P0}'}" FontSize="18" TextColor="DarkGreen" FontFamily="Unbounded-Bold.ttf" />
-                        <Label Text="{Binding NaysPercentage, StringFormat='Nays: {0:P0}'}" FontSize="18" TextColor="Crimson" FontFamily="Unbounded-Bold.ttf"/>
-                            <!-- Open Proposal button -->
-                            <Image 
-                                Source="obrazek.png"
-                                WidthRequest="20"
-                                Margin="60, 10, 0, 10"
-                                AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
-                                AbsoluteLayout.LayoutFlags="PositionProportional">
+        <!-- Foreground ScrollView -->
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0">
+            <VerticalStackLayout>
+                <!-- Fancy Page Title -->
+                <VerticalStackLayout Padding="0,0,0,12">
+                    <Label Text="Proposals List"
+                           FontSize="34"
+                           FontFamily="Unbounded-Bold.ttf"
+                           TextColor="{StaticResource Primary}"
+                           HorizontalTextAlignment="Center"
+                           HorizontalOptions="Center"
+                           Margin="0"
+                           FontAttributes="Bold" />
+                    <BoxView HeightRequest="6"
+                             WidthRequest="360"
+                             CornerRadius="2"
+                             HorizontalOptions="Center"
+                             Margin="0,8,0,0">
+                        <BoxView.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="{StaticResource Primary}" Offset="0.0" />
+                                <GradientStop Color="{StaticResource Tertiary}" Offset="0.5" />
+                                <GradientStop Color="{StaticResource PrimaryDark}" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </BoxView.Background>
+                    </BoxView>
+                </VerticalStackLayout>
 
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OpenProposalCommand}" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                        </HorizontalStackLayout>
-                        </VerticalStackLayout>
-                </Border>
-            </DataTemplate>
-        </BindableLayout.ItemTemplate>
+                <VerticalStackLayout Padding="16" Spacing="12"
+                                     BindableLayout.ItemsSource="{Binding Items}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame HasShadow="True"
+                                   CornerRadius="16"
+                                   Padding="16"
+                                   Margin="0,0,0,12"
+                                   BackgroundColor="{StaticResource SecondaryWhite}"
+                                   BorderColor="{StaticResource Primary}">
+                                <Grid RowDefinitions="Auto, Auto, Auto"
+                                      ColumnDefinitions="*, Auto">
+                                    <!-- Proposal Title -->
+                                    <Label Grid.ColumnSpan="2"
+                                           Text="{Binding Name}"
+                                           FontSize="20"
+                                           FontFamily="Unbounded-Bold.ttf"
+                                           TextColor="{StaticResource TertiaryDarkText}"
+                                           Margin="0,0,0,8" />
 
+                                    <!-- Ayes -->
+                                    <Label Text="{Binding AyesPercentage, StringFormat='✔ Ayes: {0:P0}'}"
+                                           TextColor="ForestGreen"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           Grid.Row="1"
+                                           Margin="0,2,0,0" />
 
-    </VerticalStackLayout>
+                                    <!-- Nays -->
+                                    <Label Text="{Binding NaysPercentage, StringFormat='✘ Nays: {0:P0}'}"
+                                           TextColor="Crimson"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           Grid.Row="2"
+                                           Margin="0,2,0,0" />
+
+                                    <!-- Right arrow icon -->
+                                    <Image Source="obrazek.png"
+                                           WidthRequest="24"
+                                           HeightRequest="24"
+                                           Grid.RowSpan="3"
+                                           Grid.Column="1"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="Center">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenProposalCommand}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 
     <template:PageTemplate.PopupContent>
         <accounts:NoAccountPopup />
     </template:PageTemplate.PopupContent>
+
 </template:PageTemplate>

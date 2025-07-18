@@ -30,58 +30,76 @@
              xmlns:card="clr-namespace:PlutoFramework.Components.Card;assembly=PlutoFramework"
              HideSoftInputOnTapped="True">
 
-    <AbsoluteLayout
+    <Grid>
+        <!-- Background Image with opacity -->
+        <Image Source="yellowflashy.jpg"
+               Aspect="AspectFill"
+               Opacity="0.3"
+            HorizontalOptions="Fill"
+               VerticalOptions="Fill" />
+            
+            
+            <AbsoluteLayout
                 AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
            Source="{AppThemeBinding Light=whitebackground.png, Dark=darkbackground.png}" Opacity="{AppThemeBinding Light=0.96}" Aspect="AspectFill"/>
 
+        <!-- Refreshable scroll content -->
         <RefreshView AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
                      Margin="0,65,0,65"
                      Command="{Binding RefreshCommand}" 
                      IsRefreshing="{Binding IsRefreshing}">
-            <ScrollView
-                    AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-                    IsEnabled="{Binding scrollIsEnabled}">
-                <VerticalStackLayout
-                    x:Name="stackLayout"
-                    Spacing="15"
-                    Padding="20, 15, 20, 100">
 
+            <ScrollView IsEnabled="{Binding scrollIsEnabled}">
+                <VerticalStackLayout  Padding="20" Spacing="24" x:Name="stackLayout">
+
+                    <!-- Glowing Section Title -->
+                    <Label Text="⚡ Proposals Hub ⚡"
+                           FontSize="30"
+                           FontFamily="Unbounded-Bold.ttf"
+                           TextColor="{StaticResource Primary}"
+                           HorizontalTextAlignment="Center"
+                          
+                           Margin="0,-20,0,0">
+                    </Label>
+
+                    <!-- Optional Divider -->
+                    <BoxView HeightRequest="3"
+                             Color="{StaticResource TertiaryDarkText}"
+                             CornerRadius="1.5"
+                             HorizontalOptions="Fill" />
+
+                    <!-- Balance View -->
                     <balance:UsdBalanceView />
 
-                    
-                    <Button
-                        Text="View Proposals"
-                        Command="{Binding GoToProposalsPageCommand}"
-                        BackgroundColor="{StaticResource Primary}"
-                        TextColor="{StaticResource PrimaryDarkText}"
-                        FontAttributes="Bold"
-                        FontFamily="Unbounded-Bold.ttf"
-                        Padding="10,10"
-                        CornerRadius="0"
-                        BorderColor="{StaticResource PrimaryDark}"
-                        />
+                    <!-- Yellow Themed Button 1 -->
+                    <Button Text="View Proposals"
+                            Command="{Binding GoToProposalsPageCommand}"
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="{StaticResource PrimaryDarkText}"
+                            BorderColor="{StaticResource PrimaryDark}"
+                            FontAttributes="Bold"
+                            FontFamily="Unbounded-Bold.ttf"
+                            Padding="14"
+                            CornerRadius="10" />
 
-                    <Button
-                        Text="Create Proposal"
-                        Command="{Binding ProposalCreationCommand}"
-                        BackgroundColor="{StaticResource Primary}"
-                        TextColor="{StaticResource PrimaryDarkText}"
-                        FontAttributes="Bold"
-                        FontFamily="Unbounded-Bold.ttf"
-                        Padding="10,10"
-                        CornerRadius="0"
-                        BorderColor="{StaticResource PrimaryDark}"
-                        />
+                    <!-- Yellow Themed Button 2 -->
+                    <Button Text="Create Proposal"
+                            Command="{Binding ProposalCreationCommand}"
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="{StaticResource PrimaryDarkText}"
+                            BorderColor="{StaticResource PrimaryDark}"
+                            FontAttributes="Bold"
+                            FontFamily="Unbounded-Bold.ttf"
+                            Padding="14"
+                            CornerRadius="10" />
 
-
-                    <address:PolkadotAddressView
-                       />
+                    <!-- Address View Component -->
+                    <address:PolkadotAddressView />
 
                 </VerticalStackLayout>
             </ScrollView>
         </RefreshView>
-
         <!--QR code button-->
         <Image WidthRequest="36" Margin="10, 10, 10, 10"
             AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
@@ -93,17 +111,15 @@
                 <TapGestureRecognizer Command="{Binding QrCommand}" />
             </Image.GestureRecognizers>
         </Image>
-        <Label
-            Text="Bohemia Roots"
-            TextColor="HotPink"
-            FontSize="30"
-            WidthRequest="400" Margin="50, 2, 50, 10"
-            FontFamily="Unbounded-Bold.ttf"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"
-            AbsoluteLayout.LayoutBounds="0.5, 0, AutoSize, AutoSize"
-            AbsoluteLayout.LayoutFlags="PositionProportional">
-        </Label>
+        <!-- Glowing App Title -->
+        <Label Text="Bohemia Roots"
+               FontSize="30"
+               FontFamily="Unbounded-Bold.ttf"
+               TextColor="{StaticResource TertiaryDarkText}"
+               HorizontalTextAlignment="Center"
+               AbsoluteLayout.LayoutBounds="0.5, 0, AutoSize, AutoSize"
+               AbsoluteLayout.LayoutFlags="PositionProportional"
+               Margin="0,5, 0, 0" />
         <!--Settings button-->
         <Image WidthRequest="36" Margin="10, 10, 10, 10"
            AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
@@ -154,4 +170,5 @@
 
         <card:TopPillBackgroundView />
     </AbsoluteLayout>
+    </Grid>
 </ContentPage>

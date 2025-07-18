@@ -5,18 +5,33 @@
                         xmlns:settings="clr-namespace:PlutoFramework.Components.Settings;assembly=PlutoFramework"
                         xmlns:template="clr-namespace:PlutoFramework.Templates.PageTemplate;assembly=PlutoFramework"
                         xmlns:xcavate="clr-namespace:PlutoFramework.Components.Xcavate;assembly=PlutoFramework"
-                        xmlns:accounts="clr-namespace:PlutoFramework.Components.Account;assembly=PlutoFramework"
-                        Title="Create Proposal">
+                        xmlns:accounts="clr-namespace:PlutoFramework.Components.Account;assembly=PlutoFramework">
+    <Grid>
+        <!-- Background Image with opacity -->
+        <Image Source="yellowflashy.jpg"
+           Aspect="AspectFill"
+           Opacity="0.3"
+        HorizontalOptions="Fill"
+           VerticalOptions="Fill" />
 
-    <VerticalStackLayout HorizontalOptions="Center"
+        <VerticalStackLayout HorizontalOptions="Center"
                          Padding="20, 10, 20, 100"
                          Spacing="15">
-        <!--Proposal-Name-->
+            <Label
+    Text="🚀 Create Proposal"
+    FontSize="28"
+    FontFamily="Unbounded-Bold.ttf"
+    TextColor="{StaticResource Primary}"
+    HorizontalOptions="Center"
+    Margin="0,0,0,20"
+    FontAttributes="Bold">
+            </Label>
+            <!--Proposal-Name-->
             <HorizontalStackLayout
             VerticalOptions="Center"
             Padding="0, 0, 0, 0"
             Spacing="15">
-            <Label
+                <Label
             Text="Proposal Name:"
             TextColor="Black"
             FontSize="15"
@@ -24,8 +39,8 @@
             FontFamily="Unbounded-Regular.ttf"
             AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
             AbsoluteLayout.LayoutFlags="PositionProportional">
-            </Label>
-            <Entry
+                </Label>
+                <Entry
                 Placeholder="Enter name"
                 TextColor="Black"
                 FontSize="15"
@@ -36,13 +51,13 @@
                 AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
                 AbsoluteLayout.LayoutFlags="PositionProportional"
             />
-        </HorizontalStackLayout>
-        <!--Proposal-Value-->
-        <HorizontalStackLayout
+            </HorizontalStackLayout>
+            <!--Proposal-Value-->
+            <HorizontalStackLayout
      VerticalOptions="Center"
      Padding="0, 0, 0, 0"
      Spacing="15">
-            <Label
+                <Label
      Text="Amount:"
      TextColor="Black"
      FontSize="15"
@@ -50,8 +65,8 @@
      FontFamily="Unbounded-Regular.ttf"
      AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
      AbsoluteLayout.LayoutFlags="PositionProportional">
-            </Label>
-            <Entry
+                </Label>
+                <Entry
          Placeholder="DOT Amount"
          TextColor="Black"
          FontSize="15"
@@ -62,8 +77,8 @@
          AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
          AbsoluteLayout.LayoutFlags="PositionProportional"
      />
-        </HorizontalStackLayout>
-        <!--Proposal-Description-->
+            </HorizontalStackLayout>
+            <!--Proposal-Description-->
             <Label
         Text="Proposal Description:"
         TextColor="Black"
@@ -73,7 +88,7 @@
         FontFamily="Unbounded-Regular.ttf"
         HorizontalTextAlignment="Start"
         VerticalTextAlignment="Start" />
-        <Editor
+            <Editor
         Placeholder="Enter a detailed description"
         TextColor="Black"
         FontSize="14"
@@ -83,7 +98,7 @@
         HeightRequest="120"
         Margin="0"
         />
-        <Button
+            <Button
             Text="Create Proposal"
             Command="{Binding ProposalCreationCommand}"
             BackgroundColor="{StaticResource Primary}"
@@ -94,9 +109,10 @@
             CornerRadius="0"
             BorderColor="{StaticResource PrimaryDark}"
             />
-    </VerticalStackLayout>
-
+        </VerticalStackLayout>
+    </Grid>
     <template:PageTemplate.PopupContent>
-        <accounts:NoAccountPopup />
-    </template:PageTemplate.PopupContent>
+            <accounts:NoAccountPopup />
+        </template:PageTemplate.PopupContent>
+    
 </template:PageTemplate>
