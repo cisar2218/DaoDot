@@ -1,14 +1,8 @@
-# PlutoFrameworkAppTemplate
-App template for PlutoFramework
+# Bohemia Roots App
+part of Synergy hachathon 2025 (Berlin Web3 Summit)
 
-## Setup
 
-Create a new repository which will use this repository as template.
 
-Setup git submodule. Alternatively use PlutoFramework Nuget package.
-
-```
-git submodule init
-git submodule update
-```
-
+## Techstack
+- PlutoFramework
+- Substrate.Net.Api
